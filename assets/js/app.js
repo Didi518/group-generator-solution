@@ -112,45 +112,44 @@ function generateGroups(participants, numberGroups) {
 
 const generateForm = document.getElementById('generateGroup');
 generateForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        //récupérer la valeur de l'input numberGroups
-        //je la convertis en integer
-        const numberGroups = parseInt(document.getElementById('groupNumber').value);
+    event.preventDefault();
+    //récupérer la valeur de l'input numberGroups
+    //je la convertis en integer
+    const numberGroups = parseInt(document.getElementById('groupNumber').value);
 
-        //on veut récupérer la liste des participants
-        const participants = []
-        const participantsElt = document.querySelectorAll('.participant');
+    //on veut récupérer la liste des participants
+    const participants = []
+    const participantsElt = document.querySelectorAll('.participant');
 
-        //pour chaque li, je push le texte dans le tableau participants
-        participantsElt.forEach(element => participants.push(element.textContent));
+    //pour chaque li, je push le texte dans le tableau participants
+    participantsElt.forEach(element => participants.push(element.textContent));
 
-        //gestion des erreurs
+    //gestion des erreurs
 
-        //si numberGroups n'est pas un nombre, j'affiche un message d'erreur
-        if (Number.isNaN(numberGroups)) {
-            alert('Le nombre de groupes doit être un nombre');
-            return
-        }
+    //si numberGroups n'est pas un nombre, j'affiche un message d'erreur
+    if (Number.isNaN(numberGroups)) {
+        alert('Le nombre de groupes doit être un nombre');
+        return
+    }
 
-        //si numberGroups est inférieur à 1 j'affiche un message d'erreur
-        if (numberGroups < 1) {
-            alert('le nombre de groupes doit être supérieur à 1')
-            return
-        }
+    //si numberGroups est inférieur à 1 j'affiche un message d'erreur
+    if (numberGroups < 1) {
+        alert('le nombre de groupes doit être supérieur à 1')
+        return
+    }
 
-        //si numberGroups est supérieur à la taille du tableau participants, j'affiche un message d'erreur
-        if (numberGroups > participants.length) {
-            alert('Le nombre de groupes doit être inférieur ou égal au nombre de participants')
-            return
-        }
+    //si numberGroups est supérieur à la taille du tableau participants, j'affiche un message d'erreur
+    if (numberGroups > participants.length) {
+        alert('Le nombre de groupes doit être inférieur ou égal au nombre de participants')
+        return
+    }
 
-        //si il n'y a pas de participants, j'affiche un message d'erreur
-        if (participants.length === 0) {
-            alert("Il n'y a pas de participants")
-            return
-        }
+    //si il n'y a pas de participants, j'affiche un message d'erreur
+    if (participants.length === 0) {
+        alert("Il n'y a pas de participants")
+        return
+    }
 
-        //je génère les groupes
-        generateGroups(participants, numberGroups);
-    })
-    //je veux afficher les groupes sur la page
+    //je génère les groupes
+    generateGroups(participants, numberGroups);
+})
